@@ -1,0 +1,22 @@
+.xmute-btn {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: 8px;
+  padding: 4px 8px;
+}
+
+.xmute-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.xmute-btn:active {
+  background: rgba(255, 255, 255, 0.2);
+}
