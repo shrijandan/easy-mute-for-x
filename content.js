@@ -26,13 +26,23 @@ const waitForMenuItem = async (timeoutMs = 2000) => {
   return null;
 };
 
+const isConfirmButton = (el) => {
+  if (!el) return false;
+  if (el.classList?.contains(BUTTON_CLASS)) return false;
+  const text = el.textContent.trim().toLowerCase();
+  if (text !== "mute") return false;
+  if (!isElementVisible(el)) return false;
+  const dialog = el.closest('[role="dialog"]') || el.closest('[data-testid="sheetDialog"]');
+  return Boolean(dialog);
+};
+
 const waitForConfirmButton = async (timeoutMs = 1500) => {
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
     const confirm =
       document.querySelector('[data-testid="confirmationSheetConfirm"]') ||
       Array.from(document.querySelectorAll('div[role="button"], button')).find(
-        (el) => el.textContent.trim().toLowerCase() === "mute"
+        isConfirmButton
       );
     if (confirm && isElementVisible(confirm)) {
       return confirm;
